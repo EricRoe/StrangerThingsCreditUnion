@@ -4,6 +4,7 @@
 #define NUM_LEDS 50
 #define DATA_PIN 6
 #define OFF CRGB::Black
+#define JAM 0x982371
 
 CRGB leds[NUM_LEDS];
 int msg[] = {S,T,C,U};
@@ -33,7 +34,7 @@ void rainbowLoop() {
 
 void print(int str[],int len, int d) {
   for(int i = 0; i < len; i++) {
-    leds[str[i]] = 0x982371;
+    leds[str[i]] = JAM;
     FastLED.show();
     delay(d);
     

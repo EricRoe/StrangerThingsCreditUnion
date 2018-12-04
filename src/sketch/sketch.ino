@@ -34,16 +34,19 @@ void rainbowLoop() {
 
 void print(int str[],int len, int d) {
   for(int i = 0; i < len; i++) {
-    leds[str[i]] = JAM;
-    FastLED.show();
-    delay(d);
-    
-    leds[str[i]] = OFF;
-    FastLED.show();
-    delay(d);
+    showSingle(str[i], JAM, d);
+    hideSingle(str[i], d);    
   }
 }
 
-void showFor(int led, int color, int d){
-  
+void showSingle(int led, int color, int d){
+  leds[led] = color;
+  FastLED.show();
+  delay(d);
+}
+
+void hideSingle(int led, int d) {
+  leds[led] = OFF;
+  FastLED.show();
+  delay(d)
 }

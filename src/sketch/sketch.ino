@@ -23,8 +23,8 @@ void loop() {
 }
 
 void rainbowLoop() {
-  for (int i = 0; i < NUM_LEDS; i++){
-    leds[i].setHue(i*5);
+  for (int i = 0; i < 256; i++){
+    leds[i % NUM_LEDS].setHue(i);
     FastLED.show();
     delay(50);
     leds[i] = OFF;

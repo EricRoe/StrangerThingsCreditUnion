@@ -12,24 +12,16 @@ int msg_length = 4;
   
 void setup() {
   FastLED.addLeds<WS2811, DATA_PIN>(leds, NUM_LEDS);
+  randomSeed(millis);
 }
 
 void loop() {  
   
-  print(msg, msg_length, 500);
-  rainbowLoop();    
+  rainbowLoop(); 
 
 }
 
-void rainbowLoop() {
-  for (int i = 0; i < 256; i++){
-    leds[i % NUM_LEDS].setHue(i);
-    FastLED.show();
-    delay(50);
-    leds[i] = OFF;
-    FastLED.show();
-  }
-}
+
 
 void print(int str[],int len, int d) {
   for(int i = 0; i < len; i++) {
@@ -47,5 +39,5 @@ void showSingle(int led, int color, int d){
 void hideSingle(int led, int d) {
   leds[led] = OFF;
   FastLED.show();
-  delay(d)
+  delay(d);
 }

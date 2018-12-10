@@ -41,14 +41,16 @@ void red_green(){
     FastLED.show();
     delay(15);
   }
+  FastLED.setBrightness(255);
+  clear();
 }
 
 
 void scary(){
-  CRGB colors[] = {CRGB::Red, CRGB::Orange, CRGB::Yellow, CRGB::Purple};
+  CRGB colors[] = {CRGB::Red, CRGB::Orange, CRGB::Yellow, CRGB::Purple, CRGB::Green};
   for (int i = 0; i < NUM_LEDS; i++) {
     if (random(3) == 0){
-      leds[i] = colors[random(4)];
+      leds[i] = colors[random(5)];
     } else {
       leds[i] = OFF;
     }
@@ -63,11 +65,10 @@ void scary2(){
     leds[i] = colors[random(5)];
   }
   FastLED.show();
-  delay(150 + random(100));
+  delay(150 + random(150));
   
-  fill_solid(leds, NUM_LEDS, OFF);
-  FastLED.show();
-  delay(50 + random(200));
+  clear();
+  delay(50 + random(300));
 }
 
 void xmas(){

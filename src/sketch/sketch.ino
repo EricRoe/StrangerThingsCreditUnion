@@ -7,8 +7,8 @@
 #define DATA_PIN 6
 
 CRGB leds[NUM_LEDS];
-int msg[] = {S, W, E, E, T, I, E};
-int msg_length = 7;
+int msg[] = {R,U,N};
+int msg_length = 3;
   
 void setup() {
   FastLED.addLeds<WS2811, DATA_PIN>(leds, NUM_LEDS);
@@ -16,28 +16,15 @@ void setup() {
 
 void loop() {  
 
-  xmas();
-  
+  for(int i = 0; i < 20; i++){ xmas(); }
+  for(int i = 0; i < 2; i++){ red_green(); }
 
-}
+  delay(seconds(3));
+  print(msg, msg_length, 1000); 
+  delay(seconds(2));
 
+  for(int i = 0; i < 20; i++){ scary2(); }
 
-
-void print(int str[],int len, int d) {
-  for(int i = 0; i < len; i++) {
-    showSingle(str[i], JAM, d);
-    hideSingle(str[i], d);    
-  }
-}
-
-void showSingle(int led, long color, int d){
-  leds[led] = color;
-  FastLED.show();
-  delay(d);
-}
-
-void hideSingle(int led, int d) {
-  leds[led] = OFF;
-  FastLED.show();
-  delay(d);
+  clear();
+  delay(seconds(5));
 }
